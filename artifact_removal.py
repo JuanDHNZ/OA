@@ -5,7 +5,7 @@ Created on Mon Jun 21 14:43:10 2021
 @author: Juan David
 """
 import numpy as np
-from mac import MAC
+# from mac import MAC
 from sklearn.decomposition import FastICA
 from KAF import QKLMS
 import matplotlib.pyplot as plt
@@ -234,7 +234,7 @@ class AR_ICA_KLMS():
             else:
                 Xclean.append(trial[:,self.signalEmbedding:])
 
-        print("error = ", np.linalg.norm(Xeeg - Xclean)/np.linalg.norm(Xeeg))
+        print("error = ", np.linalg.norm(Xeeg[:,:,self.signalEmbedding:] - Xclean)/np.linalg.norm(Xeeg))
         self.kurtosis = np.array(k4trial)
         return np.array(Xclean)
     
